@@ -1,16 +1,16 @@
 'use server'
-import { db } from '@/lib/mysql'
+import db from '@/lib/sqlite'
 import { redirect } from 'next/navigation';
 
 
 export async function getArticulos() {
   try {
-    const results = await db.query('select * from articulos');
+    const results = await db.all('select * from articulos');
     // console.log(results);
     return results;
   } catch (error) {
     // console.log(error);  
-    return null;    
+    return null;
   }
 }
 
@@ -20,10 +20,8 @@ export async function newArticulo(formData) {
     const descripcion = formData.get('descripcion');
     const precio = formData.get('precio');
 
-    console.log(precio);
-
     const query = 'insert into articulos(nombre,descripcion,precio) values (?, ?, ?)';
-    const results = await db.query(query, [nombre, descripcion, precio]);
+    const results = await db.run(query, [nombre, descripcion, precio]);
     console.log(results);
   } catch (error) {
     console.log(error);
@@ -39,8 +37,8 @@ export async function editArticulo(formData) {
   const precio = formData.get('precio')
 
   try {
-    const query = 'update articulos set ? where id = ? ';
-    const results = await db.query(query, [{nombre, descripcion, precio}, id]);
+    const query = 'update articulos set nombre = ?, descripcion = ?, precio = ? where id = ? ';
+    const results = await db.run(query, [nombre, descripcion, precio, id]);
     console.log(results);
   } catch (error) {
     console.log(error);
@@ -53,7 +51,7 @@ export async function deleteArticulo(formData) {
     const id = formData.get('id');
 
     const query = 'delete from articulos where id = ?';
-    const results = await db.query(query, [id]);
+    const results = await db.run(query, [id]);
     console.log(results);
   } catch (error) {
     console.log(error);

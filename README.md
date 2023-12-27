@@ -8,7 +8,7 @@ npm run db
 Esto creará el archivo `src/database/db.sqlite`.
 
 
-## Paquetes para sqlite
+## Paquetes usados para sqlite
 
 - `sqlite`
 - `sqlite3`

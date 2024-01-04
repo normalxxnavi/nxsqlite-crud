@@ -1,11 +1,11 @@
 const sqlite3 = require("sqlite3").verbose();
 
 const createTable = `CREATE TABLE IF NOT EXISTS articulos (
-    id INTEGER PRIMARY KEY,
-    nombre TEXT NOT NULL,
+    id          INTEGER PRIMARY KEY,
+    nombre      TEXT NOT NULL,
     descripcion TEXT,
-    precio DECIMAL(10,2),
-    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    precio      DECIMAL(10,2),
+    createdAt   TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );`
 
 // Connecting to or creating a new SQLite database file

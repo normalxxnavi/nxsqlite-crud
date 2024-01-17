@@ -1,5 +1,3 @@
-
-
 function Articulo({ children, articulo }) {
     return (
         <div style={{ 'border': '1px solid lightgrey', 'padding': '50px' }}>

@@ -2,7 +2,6 @@ import Link from 'next/link'
 import Articulo from '@/components/Articulo'
 import { getArticulos } from '@/lib/actions'
 
-
 export default async function Home() {
     const articulos = await getArticulos()
     // console.log(articulos);
